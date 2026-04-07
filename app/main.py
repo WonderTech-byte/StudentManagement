@@ -1,8 +1,5 @@
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI, Query, status
 
-from app.database import check_database_connection, close_database_connection, create_indexes
 from app.schemas import (
     CourseCreate,
     CourseResponse,
@@ -26,16 +23,7 @@ from app.services import (
     get_students_in_course as get_students_in_course_service,
 )
 
-
-@asynccontextmanager
-async def lifespan(_: FastAPI):
-    check_database_connection()
-    create_indexes()
-    yield
-    close_database_connection()
-
-
-app = FastAPI(title="Student Course Management System", lifespan=lifespan)
+app = FastAPI(title="Student Course Management System")
 
 
 @app.get("/")

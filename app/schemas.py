@@ -2,8 +2,6 @@ from datetime import datetime
 
 from pydantic import BaseModel, Field
 
-from app.model import CourseModel, EnrollmentModel, UserModel
-
 
 class UserCreate(BaseModel):
     name: str
@@ -11,8 +9,12 @@ class UserCreate(BaseModel):
     role: str
 
 
-class UserResponse(UserModel):
-    pass
+class UserResponse(BaseModel):
+    id: str
+    name: str
+    email: str
+    role: str
+    created_at: datetime
 
 
 class CourseCreate(BaseModel):
@@ -21,16 +23,25 @@ class CourseCreate(BaseModel):
     facilitator_id: str
 
 
-class CourseResponse(CourseModel):
-    pass
+class CourseResponse(BaseModel):
+    id: str
+    title: str
+    description: str
+    facilitator_id: str
+    created_at: datetime
 
 
 class EnrollmentCreate(BaseModel):
     student_id: str
 
 
-class EnrollmentResponse(EnrollmentModel):
-    pass
+class EnrollmentResponse(BaseModel):
+    id: str
+    student_id: str
+    course_id: str
+    grade: float | None = None
+    graded_at: datetime | None = None
+    created_at: datetime
 
 
 class GradeAssign(BaseModel):
