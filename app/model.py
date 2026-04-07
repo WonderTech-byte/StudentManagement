@@ -1,43 +1,28 @@
 from datetime import datetime
-from enum import Enum
 
-from pydantic import BaseModel, EmailStr, Field
-
-
-class UserRole(str, Enum):
-    student = "student"
-    facilitator = "facilitator"
+from pydantic import BaseModel
 
 
-class UserBase(BaseModel):
-    name: str = Field(min_length=2, max_length=100)
-    email: EmailStr
-    role: UserRole
+class UserModel(BaseModel):
+    id: str | None = None
+    name: str
+    email: str
+    role: str
+    created_at: datetime | None = None
 
 
-class UserModel(UserBase):
-    id: str
-    created_at: datetime
-
-
-class CourseBase(BaseModel):
-    title: str = Field(min_length=2, max_length=120)
-    description: str = Field(min_length=10, max_length=1000)
+class CourseModel(BaseModel):
+    id: str | None = None
+    title: str
+    description: str
     facilitator_id: str
+    created_at: datetime | None = None
 
 
-class CourseModel(CourseBase):
-    id: str
-    created_at: datetime
-
-
-class EnrollmentBase(BaseModel):
+class EnrollmentModel(BaseModel):
+    id: str | None = None
     student_id: str
     course_id: str
-
-
-class EnrollmentModel(EnrollmentBase):
-    id: str
     grade: float | None = None
     graded_at: datetime | None = None
-    created_at: datetime
+    created_at: datetime | None = None

@@ -5,7 +5,10 @@ from fastapi import HTTPException, status
 from pymongo.errors import DuplicateKeyError
 
 from app import repository
-from app.model import UserRole
+
+
+STUDENT_ROLE = "student"
+FACILITATOR_ROLE = "facilitator"
 
 
 def bad_request(message: str):
@@ -45,10 +48,13 @@ def safe_get_course(course_id: str):
 
 
 def create_user(payload):
+    if payload.role not in [STUDENT_ROLE, FACILITATOR_ROLE]:
+        conflict("Role must be either student or facilitator.")
+
     user_data = {
         "name": payload.name,
-        "email": str(payload.email),
-        "role": payload.role.value,
+        "email": payload.email,
+        "role": payload.role,
         "created_at": datetime.now(timezone.utc),
     }
     try:
@@ -59,7 +65,7 @@ def create_user(payload):
 
 def create_course(payload):
     facilitator = safe_get_user(payload.facilitator_id)
-    if facilitator["role"] != UserRole.facilitator.value:
+    if facilitator["role"] != FACILITATOR_ROLE:
         conflict("Only a facilitator can create a course.")
 
     course_data = {
@@ -82,7 +88,7 @@ def get_course(course_id: str):
 def enroll_student(course_id: str, student_id: str):
     safe_get_course(course_id)
     student = safe_get_user(student_id)
-    if student["role"] != UserRole.student.value:
+    if student["role"] != STUDENT_ROLE:
         conflict("Only a student can be enrolled in a course.")
 
     existing_enrollment = repository.get_enrollment_by_student_and_course(
@@ -141,7 +147,7 @@ def get_students_in_course(course_id: str, facilitator_id: str):
 
 def get_student_courses(student_id: str):
     student = safe_get_user(student_id)
-    if student["role"] != UserRole.student.value:
+    if student["role"] != STUDENT_ROLE:
         conflict("This user is not a student.")
 
     enrollments = repository.get_student_enrollments(student_id)

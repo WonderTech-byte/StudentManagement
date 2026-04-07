@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02bc1c74-b953-4494-8e7c-4c3ddb6236be" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/StudentManagementFastsApi.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+    <list default="true" id="02bc1c74-b953-4494-8e7c-4c3ddb6236be" name="Changes" comment="first committed">
+      <change beforePath="$PROJECT_DIR$/app/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +20,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "WonderTech-byte"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/WonderTech-byte/StudentManagement.git",
+    "accountId": "18eae6eb-f07b-481a-93b7-7d1b5b92f765"
+  }
+}]]></component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -43,6 +51,7 @@
     "Python.repository.executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master"
   }
@@ -62,6 +71,27 @@
       <option name="presentableId" value="Default" />
       <updated>1775540444236</updated>
     </task>
+    <task id="LOCAL-00001" summary="first committed">
+      <option name="closed" value="true" />
+      <created>1775542659524</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1775542659524</updated>
+    </task>
+    <task id="LOCAL-00002" summary="first committed">
+      <option name="closed" value="true" />
+      <created>1775542682907</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775542682907</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first committed" />
+    <option name="LAST_COMMIT_MESSAGE" value="first committed" />
   </component>
 </project>
