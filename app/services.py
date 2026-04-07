@@ -109,6 +109,10 @@ def enroll_student(course_id: str, student_id: str):
 
 
 def assign_grade(course_id: str, facilitator_id: str, student_id: str, grade: float):
+    facilitator = safe_get_user(facilitator_id)
+    if facilitator["role"] != FACILITATOR_ROLE:
+        conflict("Only a facilitator can assign grades.")
+
     course = safe_get_course(course_id)
     if course["facilitator_id"] != facilitator_id:
         conflict("Only the course facilitator can assign grades.")
@@ -122,6 +126,10 @@ def assign_grade(course_id: str, facilitator_id: str, student_id: str, grade: fl
 
 
 def get_students_in_course(course_id: str, facilitator_id: str):
+    facilitator = safe_get_user(facilitator_id)
+    if facilitator["role"] != FACILITATOR_ROLE:
+        conflict("Only a facilitator can view enrolled students.")
+
     course = safe_get_course(course_id)
     if course["facilitator_id"] != facilitator_id:
         conflict("Only the course facilitator can view enrolled students.")

@@ -26,11 +26,6 @@ from app.services import (
 app = FastAPI(title="Student Course Management System")
 
 
-@app.get("/")
-def healthcheck():
-    return {"status": "ok", "app": "Student Course Management System"}
-
-
 @app.post("/api/v1/users", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def create_user(payload: UserCreate):
     return create_user_service(payload)
