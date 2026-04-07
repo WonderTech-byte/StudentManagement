@@ -1,0 +1,12 @@
+[project]
+name = "studentmanagementfastsapi"
+version = "0.1.0"
+description = "Student course management REST API built with FastAPI and MongoDB"
+requires-python = ">=3.11"
+dependencies = [
+    "email-validator>=2.2.0",
+    "fastapi>=0.115.12",
+    "pydantic-settings>=2.8.1",
+    "pymongo>=4.12.0",
+    "uvicorn>=0.34.0",
+]
