@@ -1,0 +1,49 @@
+@startuml
+hide circle
+skinparam classAttributeIconSize 0
+
+enum UserRole {
+  student
+  facilitator
+}
+
+class User {
+  +id: string
+  +name: string
+  +email: string
+  +role: UserRole
+  +created_at: datetime
+}
+
+class Course {
+  +id: string
+  +title: string
+  +description: string
+  +facilitator_id: string
+  +created_at: datetime
+}
+
+class Enrollment {
+  +id: string
+  +student_id: string
+  +course_id: string
+  +grade: float?
+  +graded_at: datetime?
+  +created_at: datetime
+}
+
+class UserService
+class CourseService
+class EnrollmentService
+
+User "1" --> "0..*" Course : teaches
+User "1" --> "0..*" Enrollment : joins as student
+Course "1" --> "0..*" Enrollment : contains
+
+UserService --> User
+CourseService --> Course
+CourseService --> UserService
+EnrollmentService --> Enrollment
+EnrollmentService --> UserService
+EnrollmentService --> Course
+@enduml
