@@ -102,7 +102,6 @@ def enroll_student(course_id: str, student_id: str):
         "student_id": student_id,
         "course_id": course_id,
         "grade": None,
-        "graded_at": None,
         "created_at": datetime.now(timezone.utc),
     }
     return repository.create_enrollment(enrollment_data)
@@ -121,8 +120,7 @@ def assign_grade(course_id: str, facilitator_id: str, student_id: str, grade: fl
     if not enrollment:
         not_found("Student is not enrolled in this course.")
 
-    graded_at = datetime.now(timezone.utc)
-    return repository.update_grade(enrollment["id"], grade, graded_at)
+    return repository.update_grade(enrollment["id"], grade, None)
 
 
 def get_students_in_course(course_id: str, facilitator_id: str):
@@ -140,15 +138,14 @@ def get_students_in_course(course_id: str, facilitator_id: str):
     for enrollment in enrollments:
         student = safe_get_user(enrollment["student_id"])
         students.append(
-            {
-                "student_id": student["id"],
-                "student_name": student["name"],
-                "student_email": student["email"],
-                "enrolled_at": enrollment["created_at"],
-                "grade": enrollment["grade"],
-                "graded_at": enrollment["graded_at"],
-            }
-        )
+                {
+                    "student_id": student["id"],
+                    "student_name": student["name"],
+                    "student_email": student["email"],
+                    "enrolled_at": enrollment["created_at"],
+                    "grade": enrollment["grade"],
+                }
+            )
 
     return students
 
@@ -165,16 +162,15 @@ def get_student_courses(student_id: str):
         course = safe_get_course(enrollment["course_id"])
         facilitator = safe_get_user(course["facilitator_id"])
         courses.append(
-            {
-                "course_id": course["id"],
-                "course_title": course["title"],
-                "facilitator_id": facilitator["id"],
-                "facilitator_name": facilitator["name"],
-                "enrolled_at": enrollment["created_at"],
-                "grade": enrollment["grade"],
-                "graded_at": enrollment["graded_at"],
-            }
-        )
+                {
+                    "course_id": course["id"],
+                    "course_title": course["title"],
+                    "facilitator_id": facilitator["id"],
+                    "facilitator_name": facilitator["name"],
+                    "enrolled_at": enrollment["created_at"],
+                    "grade": enrollment["grade"],
+                }
+            )
 
     return courses
 

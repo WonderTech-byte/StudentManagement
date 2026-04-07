@@ -75,7 +75,7 @@ def get_enrollment_by_student_and_course(student_id: str, course_id: str):
 def update_grade(enrollment_id: str, grade: float, graded_at):
     enrollments_collection.update_one(
         {"_id": ObjectId(enrollment_id)},
-        {"$set": {"grade": grade, "graded_at": graded_at}},
+        {"$set": {"grade": grade}},
     )
     return get_enrollment_by_id(enrollment_id)
 

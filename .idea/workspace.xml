@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02bc1c74-b953-4494-8e7c-4c3ddb6236be" name="Changes" comment="e committed">
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+    <list default="true" id="02bc1c74-b953-4494-8e7c-4c3ddb6236be" name="Changes" comment="committed">
+      <change beforePath="$PROJECT_DIR$/app/repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,12 +103,21 @@
       <option name="project" value="LOCAL" />
       <updated>1775545168868</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="committed">
+      <option name="closed" value="true" />
+      <created>1775546790605</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1775546790605</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first committed" />
     <MESSAGE value="e committed" />
-    <option name="LAST_COMMIT_MESSAGE" value="e committed" />
+    <MESSAGE value="committed" />
+    <option name="LAST_COMMIT_MESSAGE" value="committed" />
   </component>
 </project>
