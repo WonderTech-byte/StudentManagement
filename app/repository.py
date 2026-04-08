@@ -3,8 +3,8 @@ from bson import ObjectId
 from app.database import courses_collection, enrollments_collection, users_collection
 
 
-def create_user(data: dict):
-    result = users_collection.insert_one(data)
+def create_user(userSchema: dict):
+    result = users_collection.insert_one(userSchema)
     return get_user_by_id(str(result.inserted_id))
 
 

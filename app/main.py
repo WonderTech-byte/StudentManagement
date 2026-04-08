@@ -25,6 +25,10 @@ from app.services import (
 
 app = FastAPI(title="Student Course Management System")
 
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
 
 @app.post("/api/v1/users", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 def create_user(payload: UserCreate):
