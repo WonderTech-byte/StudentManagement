@@ -70,10 +70,10 @@ def enroll_student(course_id: str, payload: EnrollmentCreate):
 
 
 @app.get("/api/v1/courses/{course_id}/students", response_model=list[CourseStudentView])
-def get_students_in_course(course_id: str, facilitator_id: str = Query(...)):
+def get_students_in_course(course_id: str, facilitator_id: str):
     return get_students_in_course_service(course_id, facilitator_id)
 
 
 @app.post("/api/v1/courses/{course_id}/grades", response_model=EnrollmentResponse)
-def assign_grade(course_id: str, payload: GradeAssign, facilitator_id: str = Query(...)):
+def assign_grade(course_id: str, payload: GradeAssign, facilitator_id: str):
     return assign_grade_service(course_id, facilitator_id, payload.student_id, payload.grade)

@@ -5,7 +5,7 @@ from fastapi import HTTPException, status
 from pymongo.errors import DuplicateKeyError
 
 from app import repository
-
+from app.schemas import UserCreate, CourseCreate
 
 STUDENT_ROLE = "student"
 FACILITATOR_ROLE = "facilitator"
@@ -47,14 +47,14 @@ def safe_get_course(course_id: str):
     return course
 
 
-def create_user(payload):
-    if payload.role not in [STUDENT_ROLE, FACILITATOR_ROLE]:
+def create_user(create_user: UserCreate):
+    if create_user.role not in [STUDENT_ROLE, FACILITATOR_ROLE]:
         conflict("Role must be either student or facilitator.")
 
     user_data = {
-        "name": payload.name,
-        "email": payload.email,
-        "role": payload.role,
+        "name": create_user.name,
+        "email": create_user.email,
+        "role": create_user.role,
         "created_at": datetime.now(timezone.utc),
     }
     try:
@@ -63,14 +63,14 @@ def create_user(payload):
         conflict("A user with this email already exists.")
 
 
-def create_course(payload):
-    facilitator = safe_get_user(payload.facilitator_id)
+def create_course(create_cource: CourseCreate):
+    facilitator = safe_get_user(create_cource.facilitator_id)
     if facilitator["role"] != FACILITATOR_ROLE:
         conflict("Only a facilitator can create a course.")
 
     course_data = {
-        "title": payload.title,
-        "description": payload.description,
+        "title": create_cource.title,
+        "description": create_cource.description,
         "facilitator_id": facilitator["id"],
         "created_at": datetime.now(timezone.utc),
     }
